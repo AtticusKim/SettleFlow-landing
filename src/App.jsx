@@ -117,7 +117,7 @@ function App() {
               <a href="#features" className="text-neutral-500 hover:text-neutral-900 transition-colors duration-200 text-sm font-medium">Platform</a>
               <a href="#benefits" className="text-neutral-500 hover:text-neutral-900 transition-colors duration-200 text-sm font-medium">Benefits</a>
               <a href="#contact" className="text-neutral-500 hover:text-neutral-900 transition-colors duration-200 text-sm font-medium">Contact</a>
-              <button className="btn-primary px-6 py-2.5 text-sm">Request Demo</button>
+              <button onClick={() => setShowDemoForm(true)} className="btn-primary px-6 py-2.5 text-sm">Request Demo</button>
             </div>
           </div>
         </div>
@@ -189,6 +189,9 @@ function App() {
                 </div>
               )}
             </div>
+            <p className="text-xs text-neutral-400 text-center mt-4 max-w-4xl mx-auto">
+              * All example companies in the demo are fictional and trade details are made up
+            </p>
           </div>
         </div>
       </section>
@@ -469,31 +472,23 @@ function App() {
               <div className="space-y-3">
                 <a href="#features" className="block text-neutral-500 hover:text-neutral-900 transition-colors duration-200 text-sm">Core Features</a>
                 <a href="#benefits" className="block text-neutral-500 hover:text-neutral-900 transition-colors duration-200 text-sm">Benefits</a>
-                <a href="#" className="block text-neutral-500 hover:text-neutral-900 transition-colors duration-200 text-sm">Documentation</a>
               </div>
             </div>
 
             <div>
               <h3 className="font-medium text-neutral-900 mb-6">Company</h3>
               <div className="space-y-3">
-                <a href="#" className="block text-neutral-500 hover:text-neutral-900 transition-colors duration-200 text-sm">About</a>
-                <a href="#" className="block text-neutral-500 hover:text-neutral-900 transition-colors duration-200 text-sm">Security</a>
-                <a href="#" className="block text-neutral-500 hover:text-neutral-900 transition-colors duration-200 text-sm">Privacy</a>
+                <a href="#features" className="block text-neutral-500 hover:text-neutral-900 transition-colors duration-200 text-sm">Security</a>
               </div>
             </div>
 
             <div>
               <h3 className="font-medium text-neutral-900 mb-6">Contact</h3>
               <div className="space-y-3 text-neutral-500 text-sm">
-                <p>hello@settleflow.com</p>
                 <p>Schedule a demo to learn more</p>
-                <button className="text-neutral-900 font-medium hover:underline text-left">Request Demo →</button>
+                <button onClick={() => setShowDemoForm(true)} className="text-neutral-900 font-medium hover:underline text-left">Request Demo →</button>
               </div>
             </div>
-          </div>
-
-          <div className="border-t border-neutral-100 mt-12 pt-8 text-center">
-            <p className="text-neutral-400 text-sm">© 2024 SettleFlow. All rights reserved.</p>
           </div>
         </div>
       </footer>
