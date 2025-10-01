@@ -12,6 +12,7 @@ import {
 function App() {
   const [showDemoForm, setShowDemoForm] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
+  const [showVideoOverlay, setShowVideoOverlay] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,6 +25,12 @@ function App() {
   const [isContactSubmitting, setIsContactSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [contactSubmitStatus, setContactSubmitStatus] = useState(null);
+
+  const handlePlayVideo = () => {
+    setShowVideoOverlay(false);
+    const video = document.getElementById('demo-video');
+    if (video) video.play();
+  };
 
   const handleInputChange = (e) => {
     setFormData({
@@ -145,24 +152,42 @@ function App() {
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            <div className="relative bg-white rounded-lg shadow-sm border border-neutral-100 aspect-video flex items-center justify-center overflow-hidden">
-              <div className="text-center p-12">
-                <div className="w-16 h-16 bg-neutral-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative bg-white rounded-lg shadow-sm border border-neutral-100 aspect-video overflow-hidden">
+              <video
+                id="demo-video"
+                className="w-full h-full object-cover"
+                controls
+                preload="metadata"
+              >
+                <source src="/demo.mov" type="video/mp4" />
+                <source src="/demo.mov" type="video/quicktime" />
+                Your browser does not support the video tag.
+              </video>
+
+              {showVideoOverlay && (
+                <div className="absolute inset-0 bg-gradient-to-br from-neutral-900/80 to-neutral-800/80 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                      <svg className="w-6 h-6 text-neutral-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-medium text-white mb-3">
+                      Interactive Platform Demo
+                    </h3>
+                    <p className="text-neutral-200 max-w-md mx-auto mb-6 leading-relaxed text-sm">
+                      Watch how SettleFlow processes invoices, detects discrepancies, and manages exceptions
+                    </p>
+                    <button
+                      onClick={handlePlayVideo}
+                      className="bg-white text-neutral-900 px-6 py-3 rounded-md text-sm font-medium hover:bg-neutral-100 transition-colors shadow-lg"
+                    >
+                      Play Demo
+                    </button>
+                  </div>
                 </div>
-                <h3 className="text-lg font-medium text-neutral-900 mb-3">
-                  Interactive Platform Demo
-                </h3>
-                <p className="text-neutral-500 max-w-md mx-auto mb-6 leading-relaxed">
-                  Watch how SettleFlow processes invoices, detects discrepancies, and manages exceptions
-                </p>
-                <button className="bg-neutral-900 text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-neutral-800 transition-colors">
-                  Play Demo
-                </button>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -305,6 +330,94 @@ function App() {
                   <div className="text-3xl font-light text-neutral-900 mb-2">24/7</div>
                   <div className="text-sm text-neutral-500">Processing</div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white">
+        <div className="max-w-dashboard mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="inline-block bg-neutral-100 text-neutral-700 text-xs font-medium px-3 py-1 rounded-full mb-6">
+              Coming Soon
+            </div>
+            <h2 className="text-3xl font-light text-neutral-900 mb-6">
+              AI Agents Across Commodity Products
+            </h2>
+            <p className="text-lg text-neutral-500 max-w-3xl mx-auto leading-relaxed">
+              Expanding beyond natural gas to bring intelligent automation across the entire commodity back-office ecosystem
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div className="bg-neutral-25 p-8 rounded-lg border border-neutral-100">
+                <h3 className="text-lg font-medium text-neutral-900 mb-4">
+                  Power & Electricity
+                </h3>
+                <p className="text-neutral-500 leading-relaxed mb-4">
+                  Day-ahead and real-time market reconciliation with nodal pricing validation
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="text-xs bg-white border border-neutral-200 text-neutral-600 px-3 py-1 rounded-full">ISO Markets</span>
+                  <span className="text-xs bg-white border border-neutral-200 text-neutral-600 px-3 py-1 rounded-full">LMP Validation</span>
+                </div>
+              </div>
+
+              <div className="bg-neutral-25 p-8 rounded-lg border border-neutral-100">
+                <h3 className="text-lg font-medium text-neutral-900 mb-4">
+                  Financial Derivatives
+                </h3>
+                <p className="text-neutral-500 leading-relaxed mb-4">
+                  Automated settlement for futures, options, and swaps across exchanges
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="text-xs bg-white border border-neutral-200 text-neutral-600 px-3 py-1 rounded-full">Futures</span>
+                  <span className="text-xs bg-white border border-neutral-200 text-neutral-600 px-3 py-1 rounded-full">Options</span>
+                  <span className="text-xs bg-white border border-neutral-200 text-neutral-600 px-3 py-1 rounded-full">Swaps</span>
+                </div>
+              </div>
+
+              <div className="bg-neutral-25 p-8 rounded-lg border border-neutral-100">
+                <h3 className="text-lg font-medium text-neutral-900 mb-4">
+                  Physical Commodities
+                </h3>
+                <p className="text-neutral-500 leading-relaxed mb-4">
+                  Settlement processing for crude oil, refined products, and NGLs
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="text-xs bg-white border border-neutral-200 text-neutral-600 px-3 py-1 rounded-full">Crude Oil</span>
+                  <span className="text-xs bg-white border border-neutral-200 text-neutral-600 px-3 py-1 rounded-full">Refined Products</span>
+                </div>
+              </div>
+
+              <div className="bg-neutral-25 p-8 rounded-lg border border-neutral-100">
+                <h3 className="text-lg font-medium text-neutral-900 mb-4">
+                  Environmental Products
+                </h3>
+                <p className="text-neutral-500 leading-relaxed mb-4">
+                  Carbon credits, renewable energy certificates, and compliance tracking
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="text-xs bg-white border border-neutral-200 text-neutral-600 px-3 py-1 rounded-full">Carbon Credits</span>
+                  <span className="text-xs bg-white border border-neutral-200 text-neutral-600 px-3 py-1 rounded-full">RECs</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-neutral-900 rounded-lg p-8 text-center">
+              <h3 className="text-xl font-medium text-white mb-3">
+                Specialized AI Agent Capabilities
+              </h3>
+              <p className="text-neutral-300 mb-6 max-w-3xl mx-auto leading-relaxed">
+                Purpose-built agents for issue detection, resolution recommendations, compliance monitoring, and predictive analytics—all designed with domain expertise for each commodity product
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <span className="text-sm bg-neutral-800 text-neutral-200 px-4 py-2 rounded-md">Issue Detection</span>
+                <span className="text-sm bg-neutral-800 text-neutral-200 px-4 py-2 rounded-md">Smart Resolution</span>
+                <span className="text-sm bg-neutral-800 text-neutral-200 px-4 py-2 rounded-md">Compliance Monitoring</span>
+                <span className="text-sm bg-neutral-800 text-neutral-200 px-4 py-2 rounded-md">Predictive Analytics</span>
               </div>
             </div>
           </div>

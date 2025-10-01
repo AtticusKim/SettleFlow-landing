@@ -123,6 +123,13 @@ className = "btn-secondary";
   - Audit-Ready Documentation
   - 60% Time Reduction
 
+### Product Demo
+
+- **Video Demo**: `/Users/atticuskim/Movies/SettleFlow Demo.mov`
+- **Usage**: Feature in hero section or dedicated demo section
+- **Styling**: Use `rounded-card shadow-card` for video container
+- **Recommended placement**: After hero section, before feature cards
+
 ### Responsive Breakpoints
 
 - **Mobile**: `sm:` (640px+)
