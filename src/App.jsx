@@ -433,10 +433,16 @@ function App() {
             Join commodity trading firms streamlining their settlement operations with SettleFlow
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-neutral-900 font-medium py-4 px-8 rounded-md hover:bg-neutral-50 transition-colors duration-200">
+            <button
+              onClick={() => setShowDemoForm(true)}
+              className="bg-white text-neutral-900 font-medium py-4 px-8 rounded-md hover:bg-neutral-50 transition-colors duration-200"
+            >
               Request Demo
             </button>
-            <button className="border border-neutral-600 text-white font-medium py-4 px-8 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+            <button
+              onClick={() => setShowContactForm(true)}
+              className="border border-neutral-600 text-white font-medium py-4 px-8 rounded-md hover:bg-neutral-800 transition-colors duration-200"
+            >
               Contact Sales
             </button>
           </div>
